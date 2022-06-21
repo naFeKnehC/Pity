@@ -1,12 +1,16 @@
-import _ from 'lodash';
+import Print from './print';
 
-function component() {
-	var element = document.createElement('div');
+async function getComponent() {
 
-	// Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
+	const element = document.createElement('div');
+
+	const {default: _} = await import('lodash');
+
 	element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
+	element.onclick = Print.bind(null, 'Hello webpack!');
 	return element;
 }
 
-document.body.appendChild(component());
+getComponent().then((component) => {
+	document.body.appendChild(component);
+});
