@@ -16,6 +16,20 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.(js|jsx)$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env', '@babel/preset-react'],
+						plugins: [
+							'@babel/plugin-transform-runtime',
+							'@babel/plugin-proposal-class-properties'
+						]
+					}
+				}
+			},
+			{
 				test: /\.css$/i,
 				use: ['style-loader', 'css-loader']
 			},
@@ -28,7 +42,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'changeCache'
+			template: path.resolve(__dirname, '../public/index.html')
 		})
 	],
 	devServer: {
