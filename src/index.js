@@ -1,12 +1,14 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import './index.css';
+
 import App from './app';
 
-const Index = () => (
-	<div>
+const Index = () => {
+	return (
 		<App />
-	</div>
-);
+	);
+};
 
 const pity = document.getElementById('pity');
 const root = createRoot(pity);

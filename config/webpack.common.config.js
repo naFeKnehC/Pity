@@ -65,7 +65,7 @@ module.exports = {
 		new MiniCssExtractPlugin()
 	],
 	resolve: {
-		extensions: ['.js', '.json', '.less', '.css'],
+		extensions: ['.js', '.jsx', '.json', '.less', '.css'],
 		modules: [path.resolve(__dirname, '../src'), 'node_modules'],
 		alias: {
 			'@': path.resolve(__dirname, '../src'),
