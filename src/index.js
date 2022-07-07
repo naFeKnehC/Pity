@@ -1,10 +1,11 @@
 import React from 'react';
 import reactDom from 'react-dom';
+import App from './app';
 
-const App = () => (
+const Index = () => (
 	<div>
-		react test
+		<App />
 	</div>
 );
 
-reactDom.render(<App />, document.getElementById('pity'));
+reactDom.render(<Index />, document.getElementById('pity'));
