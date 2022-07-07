@@ -8,7 +8,7 @@ module.exports = {
 		pity: './src/index.js'
 	},
 	output: {
-		filename: 'js/[name]-[hash].js',
+		filename: 'js/[name]-[chunkhash].js',
 		path: path.resolve(__dirname, '../dist'),
 		clean: true
 	},
@@ -23,23 +23,20 @@ module.exports = {
 						presets: ['@babel/preset-env', '@babel/preset-react'],
 						plugins: [
 							'@babel/plugin-transform-runtime',
-							'@babel/plugin-proposal-class-properties'
+							'@babel/plugin-proposal-class-properties',
+							//antd css 按需引入
+							['import', { 'libraryName': 'antd', 'style': 'css' }]
 						]
 					}
 				}]
 			},
 			{
 				test: /\.css$/i,
-				use: [
-					//style-loader
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader'
-					}
-				]
+				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
 			{
 				test: /\.less$/,
+				exclude: /node_modules/,
 				use: [
 					//style-loader
 					MiniCssExtractPlugin.loader,

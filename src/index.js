@@ -1,5 +1,5 @@
 import React from 'react';
-import reactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './app';
 
 const Index = () => (
@@ -8,4 +8,6 @@ const Index = () => (
 	</div>
 );
 
-reactDom.render(<Index />, document.getElementById('pity'));
+const pity = document.getElementById('pity');
+const root = createRoot(pity);
+root.render(<Index />);

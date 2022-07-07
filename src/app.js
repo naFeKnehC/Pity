@@ -1,11 +1,13 @@
 import React from 'react';
-import './app.less';
+import styles from './app.less';
+import { Button } from 'antd';
 
 function App(props) {
 
 	return (
-		<div className={'test'}>
-			<div className={'test1'}>react app</div>
+		<div className={styles.test}>
+			<div className={styles.test1}>react app</div>
+			<Button type={'primary'}>test</Button>
 		</div>
 	);
 }
