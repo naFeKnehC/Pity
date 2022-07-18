@@ -10,7 +10,8 @@ module.exports = {
 	output: {
 		filename: 'js/[name]-[chunkhash].js',
 		path: path.resolve(__dirname, '../dist'),
-		clean: true
+		clean: true,
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -73,12 +74,12 @@ module.exports = {
 			'@pages': path.resolve(__dirname, '../src/pages'),
 			'@util': path.resolve(__dirname, '../src/util')
 		}
-	},
-	optimization: {
-		minimize: true,//开发环境压缩
-		minimizer: [
-			new TerserPlugin(),//js压缩
-			new CssMinimizerPlugin() //css压缩
-		]
 	}
+	// optimization: {
+	// 	minimize: true,//开发环境压缩
+	// 	minimizer: [
+	// 		new TerserPlugin(),//js压缩
+	// 		new CssMinimizerPlugin() //css压缩
+	// 	]
+	// }
 };

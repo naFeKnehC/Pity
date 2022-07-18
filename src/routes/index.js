@@ -1,13 +1,15 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 
-import Home from '../pages/home';
+import Index from '../pages/Home';
+
+import Error404 from '../pages/error404';
 
 export default function Router({ history }) {
 	return useRoutes([
 		{
 			path: 'home',
-			element: <Home history={history} />
+			element: <Index history={history} />
 		},
 		{
 			path: 'test',
@@ -19,7 +21,7 @@ export default function Router({ history }) {
 		},
 		{
 			path: '*',
-			element: <div>404</div>
+			element: <Error404 />
 		}
 	]);
 }

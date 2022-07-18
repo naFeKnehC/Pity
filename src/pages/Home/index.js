@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Home(props) {
+function Index(props) {
 
 	return (
 		<div onClick={() => props.history('pity/home/2')}>home</div>
 	);
 }
 
-export default Home;
+export default Index;
 

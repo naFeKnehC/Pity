@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Error404(props) {
+function Index(props) {
 	return (
 		<div>404</div>
 	);
 }
 
-export default Error404;
+export default Index;

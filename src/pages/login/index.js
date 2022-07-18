@@ -5,7 +5,7 @@ import { Button } from 'antd';
 function Index(props) {
 
 	const login = () => {
-		props.history('/pity', {
+		props.history('/pity/home', {
 			state: { test: 'aaa' }
 		});
 	};
