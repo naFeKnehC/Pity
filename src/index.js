@@ -1,15 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './app';
+import './index.css';
 
-const Index = () => {
-	return (
-		<App />
-	);
-};
-
-const pity = document.getElementById('pity');
-const root = createRoot(pity);
-root.render(<Index />);
+const root = createRoot(
+	document.getElementById('pity')
+);
+root.render(
+	<React.StrictMode>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</React.StrictMode>
+);

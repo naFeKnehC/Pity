@@ -1,8 +1,9 @@
 import React from 'react';
 
 function Home(props) {
+
 	return (
-		<div>home</div>
+		<div onClick={() => props.history('pity/home/2')}>home</div>
 	);
 }
 

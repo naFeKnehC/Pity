@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 
-import Home from './pages/home';
-
+import Router from './routes';
 
 const { Header, Sider, Content } = Layout;
 
-const Pity = (props) => {
+const Pity = ({ history }) => {
+
 	return (
 		<Layout style={{ height: '100%' }}>
 			<Sider theme={'light'}>
@@ -23,10 +23,7 @@ const Pity = (props) => {
 					<Layout style={{ height: '100%' }}>
 						<div>tab bar</div>
 						<Content>
-							<Routes>
-								<Route path={'home'} element={<Home />} />
-								<Route path={'test'} element={<div>test</div>} />
-							</Routes>
+							<Router history={history} />
 						</Content>
 					</Layout>
 				</Content>
