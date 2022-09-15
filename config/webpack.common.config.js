@@ -5,7 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
 	entry: {
-		pity: './src/index.js'
+		pity: './src/index.tsx'
 	},
 	output: {
 		filename: 'js/[name]-[chunkhash].js',
@@ -15,6 +15,8 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+			{ enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
@@ -66,7 +68,7 @@ module.exports = {
 		new MiniCssExtractPlugin()
 	],
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '.less', '.css'],
+		extensions: [".ts", ".tsx", '.js', '.jsx', '.json', '.less', '.css'],
 		modules: [path.resolve(__dirname, '../src'), 'node_modules'],
 		alias: {
 			'@': path.resolve(__dirname, '../src'),
@@ -74,7 +76,11 @@ module.exports = {
 			'@pages': path.resolve(__dirname, '../src/pages'),
 			'@util': path.resolve(__dirname, '../src/util')
 		}
-	}
+	},
+	// externals: {
+	// 	"react": "React",
+	// 	"react-dom": "ReactDOM"
+	// }, 有bug React is undefined
 	// optimization: {
 	// 	minimize: true,//开发环境压缩
 	// 	minimizer: [
