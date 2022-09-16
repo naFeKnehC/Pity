@@ -2,7 +2,6 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 
 import Index from '../pages/Home';
-
 import Error404 from '../pages/error404';
 
 export default function Router({ history }) {

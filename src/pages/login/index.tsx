@@ -1,25 +1,25 @@
 import * as React from "react";
 import styles from './index.less';
-import { Button } from 'antd';
+import {Button} from 'antd';
 
-declare interface props{
-	history:any
+declare interface props {
+  history: any
 }
 
-function Index(props:props) {
+function Index(props: props) {
 
-			const login = () => {
-						props.history('/pity/home', {
-					state: { test: 'aaa' }
-				});
-			};
+  const login = () => {
+    props.history('/pity/home', {
+      state: {test: 'aaa'}
+    });
+  };
 
-			return (
-				<div className={styles.body}>
-					login
-					<Button onClick={login}>loginSuccess</Button>
-				</div>
-			);
-		}
+  return (
+    <div className={styles.body}>
+      login
+      <Button onClick={login}>loginSuccess</Button>
+    </div>
+  );
+}
 
-		export default Index;
+export default Index;

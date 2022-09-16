@@ -9,7 +9,6 @@ const { Header, Sider, Content } = Layout;
 declare interface props{
 	history:any
 }
-
 const Pity = (props:props) => {
 
 	return (
