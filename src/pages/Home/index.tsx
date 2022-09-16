@@ -1,6 +1,10 @@
-import React from 'react';
+import *as React from 'react';
 
-function Index(props) {
+declare interface props {
+	history:any
+}
+
+function Index(props:props) {
 
 	return (
 		<div onClick={() => props.history('pity/home/2')}>home</div>

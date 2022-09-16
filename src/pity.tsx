@@ -1,12 +1,16 @@
-import React from 'react';
+import * as React from "react";
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 
-import Router from './routes';
+// import Router from './routes';
 
 const { Header, Sider, Content } = Layout;
 
-const Pity = ({ history }) => {
+declare interface props{
+	history:any
+}
+
+const Pity = (props:props) => {
 
 	return (
 		<Layout style={{ height: '100%' }}>
@@ -23,7 +27,7 @@ const Pity = ({ history }) => {
 					<Layout style={{ height: '100%' }}>
 						<div>tab bar</div>
 						<Content>
-							<Router history={history} />
+							{/*<Router history={props.history} />*/}
 						</Content>
 					</Layout>
 				</Content>

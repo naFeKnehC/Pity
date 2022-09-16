@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from "react";
 
-function Index(props) {
+function Index() {
 	return (
 		<div>404</div>
 	);
