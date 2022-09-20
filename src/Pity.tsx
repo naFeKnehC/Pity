@@ -1,16 +1,10 @@
-import * as React from "react";
-import {useState} from "react";
+import React from 'react';
 
-interface props {
-
+function Pity() {
+  return (
+    <div>111</div>
+  );
 }
 
-export const Pity: React.FC<props> = () => {
-
-  const [test] = useState('aaa');
-
-  return (
-    <div>{test}</div>
-  );
-};
+export default Pity;
 

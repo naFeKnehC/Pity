@@ -2,6 +2,7 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 module.exports = {
 	entry: {
@@ -15,54 +16,68 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-			{ enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: [{
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react'],
-						plugins: [
-							'@babel/plugin-transform-runtime',
-							'@babel/plugin-proposal-class-properties',
-							//antd css 按需引入
-							['import', { 'libraryName': 'antd', 'style': 'css' }]
-						]
-					}
-				}]
-			},
-			{
-				test: /\.css$/i,
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
-			},
-			{
-				test: /\.less$/,
-				exclude: /node_modules/,
-				use: [
-					//style-loader
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							modules: {
-								localIdentName: '[name]__[local]--[hash:base64:5]',
-								localIdentContext: path.resolve(__dirname, '../src')
-							}
-						}
-					},
-					{
-						loader: 'less-loader'
-					}
-				]
-			},
-			//webpack5内置图片处理
-			{
-				test: /\.(png|svg|jpg|jpeg|gif)$/i,
-				type: 'asset/resource'
-			}
-		]
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-react',
+            '@babel/preset-typescript'
+          ],
+          plugins: [
+            ['import', {libraryName: 'antd', style: 'css'}], // `style: true` 会加载 less 文件
+          ],
+        }
+      },
+      {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   exclude: /node_modules/,
+      //   use: [{
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: ['@babel/preset-env', '@babel/preset-react'],
+      //       plugins: [
+      //         '@babel/plugin-transform-runtime',
+      //         '@babel/plugin-proposal-class-properties',
+      //         //antd css 按需引入
+      //         ['import', {'libraryName': 'antd', 'style': 'css'}]
+      //       ]
+      //     }
+      //   }]
+      // },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          //style-loader
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                localIdentContext: path.resolve(__dirname, '../src')
+              }
+            }
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      //webpack5内置图片处理
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
+      }
+    ]
 	},
 	plugins: [
 		new MiniCssExtractPlugin()
