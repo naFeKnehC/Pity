@@ -27,7 +27,7 @@ module.exports = {
             '@babel/preset-typescript'
           ],
           plugins: [
-            ['import', {libraryName: 'antd', style: 'css'}], // `style: true` 会加载 less 文件
+            ['import', {libraryName: 'antd', style: 'css'}], //antd 按需引入 `style: true` 会加载 less 文件
           ],
         }
       },
@@ -91,16 +91,5 @@ module.exports = {
 			'@pages': path.resolve(__dirname, '../src/pages'),
 			'@util': path.resolve(__dirname, '../src/util')
 		}
-	},
-	// externals: {
-	// 	"react": "React",
-	// 	"react-dom": "ReactDOM"
-	// }, 有bug React is undefined
-	// optimization: {
-	// 	minimize: true,//开发环境压缩
-	// 	minimizer: [
-	// 		new TerserPlugin(),//js压缩
-	// 		new CssMinimizerPlugin() //css压缩
-	// 	]
-	// }
+  }
 };
