@@ -1,15 +1,21 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const common = require('./webpack.common.config.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
-	mode: 'production',
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '../public/index.html'),
-			filename: 'index.[contenthash].html',
-			inject: 'body'
-		})
-	]
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin(), //css压缩
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true, // 屏蔽log
+          },
+        },
+      }), //js压缩
+    ],
+  },
 });
