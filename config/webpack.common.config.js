@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts(x?)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -32,7 +32,11 @@ module.exports = {
           ],
         }
       },
-      {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+      },
       // {
       //   test: /\.(js|jsx)$/,
       //   exclude: /node_modules/,
@@ -95,4 +99,8 @@ module.exports = {
       '@': path.resolve(__dirname, '../src')
     }
   },
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM"
+  }
 };
