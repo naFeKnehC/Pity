@@ -24,24 +24,22 @@ function Index() {
 	const longestPalindrome = (s: string): string => {
 		/*
 		   dbbc
-		   cbbd
+		   bbbbcccc
 		 */
 		let str: string = '';
 		for (let i = 0; i < s.length; i++) {
-			// let length = 0;
-			// while (i - length >= 0 && i + length + 1 < s.length && s[i - length] === s[i + length + 1]) {
-			// 	const newStr = s.substring(i - length, i + length + 2);
-			// 	str = newStr.length > str.length ? newStr : str;
-			// 	length++;
-			// }
-
-			let length1 = 0;
-			while (i - length1 >= 0 && i + length1 < s.length) {
-				if (s[i - length1] === s[i + length1]) {
-					const newStr = s.substring(i - length1, i + length1 + 1);
+			let j = 0;
+			while (i - j >= 0 && i + j <= s.length) {
+				if (s[i - j] === s[i + j]) {
+					const newStr = s.substring(i - j, i + j + 1);
 					str = newStr.length > str.length ? newStr : str;
 				}
-				length1++;
+				if (s[i] === s[i + 1] && s[i - j] === s[i + j + 1] && s[i + j + 1]) {
+					const newStr = s.substring(i - j, i + j + 2);
+					str = newStr.length > str.length ? newStr : str;
+				}
+				debugger;
+				j++;
 			}
 		}
 		console.log(str);
@@ -59,7 +57,7 @@ function Index() {
 			<div>
 				5.最长回文子串 输入"babad" 输出"bab"或"aba"
 				<a href={'https://leetcode.cn/problems/longest-palindromic-substring/'} target={'_blank'}>题目</a>
-				<div onClick={() => longestPalindrome('babad')}>运行解法{longestPalindrome('aaa')}</div>
+				<div onClick={() => longestPalindrome('babad')}>运行解法{longestPalindrome('aacabdkacaa')}</div>
 			</div>
 		</>
 	);
